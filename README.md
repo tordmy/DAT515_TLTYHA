@@ -2,7 +2,7 @@
 ## Docker
 Runnin the docker containers should be as easy as:
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
 ## Kubernetes
