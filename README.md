@@ -33,7 +33,7 @@ minikube service app-deploy --url
 ```
 The pod is now accessible localy to the running machine
 
-The HPA should now function. (Note: it might take some time before the first mesurement is made.) Check the recource usage and hpa status using:
+The HPA should now function. (Note: it might take some time before the first measurement is made. Usually more than 3 minutes.) Check the recource usage and hpa status using:
 ```bash
 kubectl get hpa
 ```
