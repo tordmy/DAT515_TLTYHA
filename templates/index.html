@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+<body>
+  <h3 style="margin: 10pt;">Leave a comment below:</h3>
+  <div style="padding: 10pt;">
+    <form method="POST">
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input id="username" type="text" name="username" class="form-control" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <label for="content">Message</label>
+        <input id="content" type="text" name="content" class="form-control" placeholder="Message">
+      </div>
+      <input type="submit" value="Submit" class="btn btn-primary"><br>
+    </form>
+  </div>
+<hr>
+{% for message in messages %}
+<div class="card" style="margin: 10pt; padding: -5pt; background-color: #EEEEFF;">
+  <div style="background-color: #EEEEFF;" class="card-body">
+    <p><strong>{{ message.username }}:</strong> {{ message.content }}</p>
+  </div>
+</div>
+{% endfor %}
+</body>
+</html>
