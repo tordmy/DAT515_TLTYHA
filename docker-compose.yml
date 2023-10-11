@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db-deploy:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+
+  web:
+    build: 
+      context: .
+      network: host
+    command: python app.py
+    volumes:
+      - .:/code
+    ports:
+      - "8881:8000"
+    depends_on:
+      - db-deploy

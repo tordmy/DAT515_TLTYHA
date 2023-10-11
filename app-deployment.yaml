@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-deploy
+  template:
+    metadata:
+      labels:
+        app: app-deploy
+    spec:
+      containers:
+      - name: app-deploy
+        image: basic_appv2:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "150m"
+        livenessProbe:
+          httpGet:
+            path: /ishealthy
+            port: 8000
+          initialDelaySeconds: 45
+          timeoutSeconds: 2
+        readinessProbe:
+          httpGet:
+            path: /isready
+            port: 8000
+          initialDelaySeconds: 45
+          timeoutSeconds: 2

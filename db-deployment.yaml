@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-deploy
+  template:
+    metadata:
+      labels:
+        app: db-deploy
+    spec:
+      containers:
+      - name: db-deploy
+        image: postgres
+        env:
+          - name: POSTGRES_PASSWORD
+            value: "example"
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: db-persistent-storage
+          mountPath: /var/opt/appdb
+      volumes:
+      - name: db-persistent-storage
+        persistentVolumeClaim:
+          claimName: db-pvc
